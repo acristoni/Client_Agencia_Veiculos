@@ -17,7 +17,7 @@ interface Values {
 
 export default function Compra() {
     const[modalIsOpen, setIsOpen] = useState(false);
-    const[mensagemSucesso, setMensagemSucesso] = useState('');
+    const[mensagemRetorno, setMensagemRetorno] = useState('');
     const[dadosCompra, setDadosCompra] = useState({ 
         "modelo": '',
         "marca": '',
@@ -36,8 +36,8 @@ export default function Compra() {
     },[dadosCompra])
 
     const enviaDadosCompra = async (dados:Values) => {
-        const retorn: string =  await postCarro(dados);
-        return setMensagemSucesso(retorn);
+        const response: string =  await postCarro(dados);
+        return setMensagemRetorno(response);
     }
 
     return (
@@ -45,7 +45,7 @@ export default function Compra() {
             <ModalCompra 
                 modalIsOpen={modalIsOpen}
                 closeModal={()=>setIsOpen(false)}
-                mensagemSucesso={mensagemSucesso}
+                mensagemRetorno={mensagemRetorno}
             />
 
             <h1>Cadastro de compra de veiculo:</h1>
@@ -82,13 +82,13 @@ export default function Compra() {
                         <Field id="anodefabricação" name="anodefabricação" placeholder="1967" />
 
                         <label htmlFor="placa">Placa</label>
-                        <Field id="placa" name="placa" placeholder="VIX-2020" />
+                        <Field id="placa" name="placa" placeholder="Ex: VIX-2020 ou VIX2A20" />
 
                         <label htmlFor="cor">Cor</label>
                         <Field id="cor" name="cor" placeholder="Preto" />
 
                         <label htmlFor="chassi">Chassi</label>
-                        <Field id="chassi" name="chassi" placeholder="eu93ufoidijh938" />
+                        <Field id="chassi" name="chassi" placeholder="9BG116GW04C400001" />
 
                         <label htmlFor="valordecompra">Valor da Compra</label>
                         <Field id="valordecompra" name="valordecompra" placeholder="R$ 100.000,00" />

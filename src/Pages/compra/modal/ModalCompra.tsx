@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
-import putVenda from '../../../services/putVenda';
 
 interface Props {
-    mensagemSucesso: string;
+    mensagemRetorno: string;
     modalIsOpen: boolean;
     closeModal: () => void;
 }
@@ -27,8 +25,7 @@ if (process.env.NODE_ENV !== 'test') {
   Modal.setAppElement('#root');
 }
 
-const ModalVenda: React.FC<Props> = ({mensagemSucesso, modalIsOpen, closeModal}) => {
-
+const ModalVenda: React.FC<Props> = ({mensagemRetorno, modalIsOpen, closeModal}) => {
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -36,7 +33,7 @@ const ModalVenda: React.FC<Props> = ({mensagemSucesso, modalIsOpen, closeModal})
       style={customStyles}
       contentLabel="ModalCompra"
     >
-        <h1>{mensagemSucesso}</h1>
+        <h1>{mensagemRetorno}</h1>
         <h4>Pressione ESC para voltar</h4>
     </Modal>
   );

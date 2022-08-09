@@ -1,3 +1,4 @@
+import axios, { AxiosError } from 'axios';
 import api from './api';
 
 interface Params {
@@ -5,12 +6,15 @@ interface Params {
     valordavenda: number
 }
 
-const putVenda = (venda: Params): Promise<string> => {
+const putVenda = async (venda: Params): Promise<string> => {
   const header = {
     'Content-Type': 'application/json',
   };
 
-  return api
+  try {
+    const response = 
+    await
+    api
       .put(
           '/venda',
           {
@@ -21,7 +25,20 @@ const putVenda = (venda: Params): Promise<string> => {
             headers: header,
           },
       )
-      .then((response) => response.data);
-};
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        type ServerError = {
+          error: string | PromiseLike<string>;};
+
+        const serverError = error as AxiosError<ServerError>;
+        if (serverError && serverError.response) {
+          return serverError.response.data.error;
+        }
+      }
+      const errorMessage = "Erro interno da aplicação"
+      return errorMessage;
+    }
+  }
 
 export default putVenda;

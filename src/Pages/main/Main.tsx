@@ -3,7 +3,6 @@ import '../../GlobalStyle.css';
 function Main() {
   return (
     <div>
-      {false ? <h1>verdade</h1> : <h1>mentira</h1>}
       <section className='box'>
         <h1>Agência de Veículos</h1>
         <div className='compraevenda'>
