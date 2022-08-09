@@ -58,8 +58,7 @@ const ModalVenda: React.FC<Props> = ({uuid, modalIsOpen, closeModal}) => {
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="ModalVenda"
-    >
-      { mensSucesso.length > 1 ? 
+    > 
       <h1>{mensSucesso}</h1> : 
       <Formik
         initialValues={{
@@ -88,7 +87,6 @@ const ModalVenda: React.FC<Props> = ({uuid, modalIsOpen, closeModal}) => {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-      }
       <h4>Pressione ESC para voltar para lista</h4>
     </Modal>
   );
